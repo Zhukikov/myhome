@@ -1,0 +1,21 @@
+"\e[1~": beginning-of-line    # Home key
+"\e[4~": end-of-line          # End key
+"\e[3~": delete-char          # Delete key
+"\e[5C": forward-word         # Ctrl+right
+"\e[5D": backward-word        # Ctrl+left
+"\e\e[C": forward-word        # Alt+right
+"\e\e[D": backward-word       # Alt+left
+"\C-K": unix-line-discard     # Ctrl+K
+"\e\"": "@{}\e[D"             # Insert @{} move cursor into braces
+
+# these allow you to start typing a command and
+# use the up/down arrow to auto complete from
+# commands in your history
+"\e[B": history-search-forward
+"\e[A": history-search-backward
+
+# Shows all files instead of beep when tab-completing
+# set show-all-if-ambiguous on
+
+# Ignore case when completing, very nice!
+# set completion-ignore-case on

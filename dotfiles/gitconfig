@@ -1,0 +1,7 @@
+[color]
+	ui = true
+[user]
+	name = Andrejs Muzikovs
+	email = andrejs.muzikovs@gmail.com
+[core]
+	excludesfile = ~/.gitignore

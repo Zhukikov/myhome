@@ -1,0 +1,59 @@
+set nocompatible
+
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+execute pathogen#infect()
+
+syntax on
+filetype plugin indent on
+
+set nu
+set wrap
+
+set noswapfile
+set nobackup
+set nowritebackup
+
+set tabstop=2
+set shiftwidth=2
+set expandtab
+
+set incsearch
+set hlsearch
+
+set hidden
+
+set laststatus=2
+
+set cursorline
+set scrolloff=5
+
+nnoremap <F3> :NERDTreeToggle<CR>
+nnoremap <F5> :GundoToggle<CR>
+nnoremap <F6> :TagbarToggle<CR>
+
+" set ttyfast
+
+set showcmd
+
+set ruler
+
+set backspace=indent,eol,start
+
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+
+set mouse=a
+nmap <F1> <nop>
+
+let g:syntastic_javascript_checkers = ['jshint']
+
+map <C-J> <C-W>j<C-W>_
+map <C-K> <C-W>k<C-W>_
+map <C-L> <C-W>l<C-W>_
+map <C-H> <C-W>h<C-W>_
+
+set t_Co=256
+set background=dark
+
+let g:hybrid_use_iTerm_colors = 1
+colorscheme hybrid
