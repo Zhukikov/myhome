@@ -8,7 +8,6 @@ filetype plugin indent on
 
 set nu
 set wrap
-
 set noswapfile
 set nobackup
 set nowritebackup
@@ -17,8 +16,15 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 
+set showmatch
+set matchtime=1
+
+" set colorcolumn=80
+
 set incsearch
 set hlsearch
+set ignorecase
+set smartcase
 
 set hidden
 
@@ -30,6 +36,11 @@ set scrolloff=5
 nnoremap <F3> :NERDTreeToggle<CR>
 nnoremap <F5> :GundoToggle<CR>
 nnoremap <F6> :TagbarToggle<CR>
+nnoremap <leader>l :ls<cr>:b<space>
+" nnoremap <leader>d :ls<cr>:bd<space>
+nnoremap <leader>r :source ~/.vimrc<CR>
+nnoremap <leader>c :ccl<CR>
+nnoremap <leader>a :Ack<space>
 
 " set ttyfast
 
@@ -43,7 +54,16 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 
 set mouse=a
-nmap <F1> <nop>
+
+" enables split resizing with mouse
+if &term =~ '^screen'
+  " tmux knows the extended mouse mode
+  set ttymouse=xterm2
+endif
+
+inoremap <F1> <nop>
+nnoremap <F1> <nop>
+vnoremap <F1> <nop>
 
 let g:syntastic_javascript_checkers = ['jshint']
 

@@ -17,5 +17,3 @@ fabfile=~/fabric/fabfile.py
 # Local MYSQL info. Used in tasks where this can't be parsed from the project.
 # local_db_user=root
 # local_db_password=pass
-
-export PROJECT_DIR='~/www'
