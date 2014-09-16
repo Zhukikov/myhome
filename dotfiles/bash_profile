@@ -2,11 +2,13 @@ if [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion
 fi
 
+# show number of running tasks
 PS1="\u@\h:\W [\j] \$ "
 
 export CLICOLOR=1
 # export LSCOLORS=GxFxCxDxBxegedabagaced
 export PATH=/usr/local/bin:$PATH
+export PATH=~/.cabal/bin:$PATH
 export PROJECT_DIR='~/www'
 
 eval "$(/Users/andrejs/go/bin/go init -)"
@@ -14,3 +16,15 @@ eval "$(/Users/andrejs/go/bin/go init -)"
 # aliases
 alias top="top -ocpu"
 alias dcc="drush cc all"
+
+# set-option -g mouse-select-pane on
+# set-option -g mouse-select-window on
+# set-option -g mouse-resize-pane on
+# set-window-option -g mode-mouse on
+
+alias genctags="ctags -R --langmap=php:+.engine.inc.module.theme --php-kinds=cdfi"
+
+# rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+export RBENV_ROOT=/usr/local/var/rbenv
+export PATH=/usr/local/var/rbenv/shims:$PATH

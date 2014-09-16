@@ -19,7 +19,12 @@ set expandtab
 set showmatch
 set matchtime=1
 
-" set colorcolumn=80
+set wildmenu
+
+set path=**
+nnoremap <leader>f :find *
+
+set colorcolumn=80
 
 set incsearch
 set hlsearch
@@ -37,16 +42,22 @@ nnoremap <F3> :NERDTreeToggle<CR>
 nnoremap <F5> :GundoToggle<CR>
 nnoremap <F6> :TagbarToggle<CR>
 nnoremap <leader>l :ls<cr>:b<space>
-" nnoremap <leader>d :ls<cr>:bd<space>
 nnoremap <leader>r :source ~/.vimrc<CR>
 nnoremap <leader>c :ccl<CR>
 nnoremap <leader>a :Ack<space>
+nnoremap <leader>dc :!drush cc all<CR>
+
+" search for tags up to home directory
+set tags+=tags;~
 
 " set ttyfast
 
 set showcmd
 
 set ruler
+
+set list
+set listchars=tab:>-,trail:·
 
 set backspace=indent,eol,start
 
@@ -66,6 +77,8 @@ nnoremap <F1> <nop>
 vnoremap <F1> <nop>
 
 let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_php_checkers=['php']
+let g:syntastic_scss_checkers = ['scss_lint']
 
 map <C-J> <C-W>j<C-W>_
 map <C-K> <C-W>k<C-W>_
@@ -75,5 +88,5 @@ map <C-H> <C-W>h<C-W>_
 set t_Co=256
 set background=dark
 
-let g:hybrid_use_iTerm_colors = 1
+"let g:hybrid_use_iTerm_colors = 1
 colorscheme hybrid
