@@ -31,3 +31,6 @@
 [submodule "goodold-bin"]
 	path = goodold-bin
 	url = https://github.com/goodold/goodold-bin
+[submodule "vim/bundle/vim-tmux-navigator"]
+	path = vim/bundle/vim-tmux-navigator
+	url = https://github.com/christoomey/vim-tmux-navigator
