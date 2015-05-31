@@ -34,3 +34,9 @@
 [submodule "vim/bundle/vim-tmux-navigator"]
 	path = vim/bundle/vim-tmux-navigator
 	url = https://github.com/christoomey/vim-tmux-navigator
+[submodule "vim/bundle/vim-pad"]
+	path = vim/bundle/vim-pad
+	url = https://github.com/fmoralesc/vim-pad
+[submodule "vim/bundle/editorconfig-vim"]
+	path = vim/bundle/editorconfig-vim
+	url = https://github.com/editorconfig/editorconfig-vim.git
