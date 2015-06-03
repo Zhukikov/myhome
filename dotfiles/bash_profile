@@ -33,3 +33,20 @@ export PATH=/usr/local/var/rbenv/shims:$PATH
 # Swap the php version
 # export PATH="$(brew --prefix homebrew/php/php54)/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
+
+_www()
+{
+  local cur=${COMP_WORDS[COMP_CWORD]}
+  COMPREPLY=( $(compgen -W "$(ls -1 $PROJECT_DIR)" -- $cur) )
+}
+
+function xipio () {
+  local ip=`ifconfig en0 | egrep -o "inet [^ ]+" | cut -d ' ' -f 2-`
+  open "http://$1.$ip.xip.io"
+}
+complete -F _www xipio
+
+function www () {
+  cd /Users/andrejs/www/"$1";
+}
+complete -F _www www
