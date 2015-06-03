@@ -9,7 +9,7 @@ export CLICOLOR=1
 # export LSCOLORS=GxFxCxDxBxegedabagaced
 export PATH=/usr/local/bin:$PATH
 export PATH=~/.cabal/bin:$PATH
-export PROJECT_DIR='~/www'
+export PROJECT_DIR="$HOME/www"
 
 eval "$(/Users/andrejs/go/bin/goodold init -)"
 
