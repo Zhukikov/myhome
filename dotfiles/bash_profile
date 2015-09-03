@@ -10,6 +10,7 @@ export CLICOLOR=1
 export PATH=/usr/local/bin:$PATH
 export PATH=~/.cabal/bin:$PATH
 export PROJECT_DIR="$HOME/www"
+export EDITOR="vim"
 
 eval "$(/Users/andrejs/go/bin/goodold init -)"
 
@@ -18,6 +19,7 @@ alias top="top -ocpu"
 alias dcc="drush cc all"
 alias wcc="wp cache flush && wp rewrite flush && wp transient delete-all"
 alias genctags="ctags -R --langmap=php:+.engine.inc.module.theme --php-kinds=cdfi"
+alias hosts="sudo $EDITOR /etc/hosts"
 
 # set-option -g mouse-select-pane on
 # set-option -g mouse-select-window on
