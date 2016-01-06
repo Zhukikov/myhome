@@ -12,8 +12,6 @@ export PATH=~/.cabal/bin:$PATH
 export PROJECT_DIR="$HOME/www"
 export EDITOR="vim"
 
-eval "$(/Users/andrejs/go/bin/goodold init -)"
-
 # aliases
 alias top="top -ocpu"
 alias dcc="drush cc all"
