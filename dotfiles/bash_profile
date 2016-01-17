@@ -51,3 +51,6 @@ function www () {
   cd /Users/andrejs/www/"$1";
 }
 complete -F _www www
+
+# Work
+source ~/.bash_boozt
