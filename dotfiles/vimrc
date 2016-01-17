@@ -6,7 +6,7 @@ execute pathogen#infect()
 syntax on
 filetype plugin indent on
 
-set nu
+set number
 set wrap
 set noswapfile
 set nobackup
