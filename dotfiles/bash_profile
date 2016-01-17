@@ -52,5 +52,7 @@ function www () {
 }
 complete -F _www www
 
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
 # Work
 source ~/.bash_boozt

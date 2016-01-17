@@ -41,6 +41,9 @@ set laststatus=2
 set cursorline
 set scrolloff=5
 
+set rtp+=~/.fzf
+let g:fzf_layout = {}
+
 set pastetoggle=<F2>
 nnoremap <F3> :NERDTreeToggle<CR>
 nnoremap <F5> :GundoToggle<CR>
@@ -48,7 +51,8 @@ nnoremap <F6> :TagbarToggle<CR>
 nnoremap <leader>l :ls<cr>:b<space>
 nnoremap <leader>r :source ~/.vimrc<CR>
 nnoremap <leader>c :ccl<CR>
-nnoremap <leader>a :Ag
+nnoremap <leader>a :Ag 
+nnoremap <leader>s :Files<CR>
 nnoremap <leader>dc :!drush cc all<CR>
 cnoremap <expr> %% expand('%:h').'/'
 
