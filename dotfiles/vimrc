@@ -48,7 +48,7 @@ nnoremap <F6> :TagbarToggle<CR>
 nnoremap <leader>l :ls<cr>:b<space>
 nnoremap <leader>r :source ~/.vimrc<CR>
 nnoremap <leader>c :ccl<CR>
-nnoremap <leader>a :Ag<space>""<left>
+nnoremap <leader>a :Ag
 nnoremap <leader>dc :!drush cc all<CR>
 cnoremap <expr> %% expand('%:h').'/'
 
@@ -101,8 +101,6 @@ if executable('ag')
   " Use ag over grep
   "set grepprg=ag\ --nogroup\ --nocolor
 endif
-
-let g:ag_prg = 'ag --nogroup --column --depth -1 --ignore node_modules --ignore sql --ignore schema'
 
 set t_Co=256
 set background=dark
