@@ -16,7 +16,8 @@ export EDITOR="vim"
 alias top="top -ocpu"
 alias dcc="drush cc all"
 alias wcc="wp cache flush && wp rewrite flush && wp transient delete-all"
-alias genctags="ctags -R --langmap=php:+.engine.inc.module.theme --php-kinds=cdfi"
+alias tagsdrupal="ctags -R --langmap=php:+.engine.inc.module.theme --php-kinds=cdfi"
+alias tagssymfony="ctags -R --languages=php --php-kinds=cif --exclude=.git/* --exclude=app/* --exclude=bin/* --exclude=web/* --exclude=tests/* --exclude=*/Test/* --exclude=*/Tests/* --exclude=*test* --exclude=*Form/Type* --exclude=vendor/*/vendor --exclude=composer.phar --fields=+aimS"
 alias hosts="sudo $EDITOR /etc/hosts"
 
 # set-option -g mouse-select-pane on
