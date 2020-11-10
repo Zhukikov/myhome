@@ -47,6 +47,8 @@
     (import ../modules/vim.nix)
   ];
 
+  environment.variables = { EDITOR = "vim"; };
+
   # Fonts
   fonts.fonts = with pkgs; [
     pkgs.font-awesome
