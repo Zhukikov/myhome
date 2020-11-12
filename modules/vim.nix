@@ -44,6 +44,8 @@
         set laststatus=2
 
         set scrolloff=5
+
+        set backspace=indent,eol,start
       '';
       packages.myVimPackage = with pkgs.vimPlugins; {
         # loaded on launch
