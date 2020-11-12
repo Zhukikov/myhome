@@ -10,11 +10,6 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  # Try to disable bluetooth due to invulnerability in kernel 5.8
-  hardware.bluetooth.enable = false;
-  hardware.bluetooth.powerOnBoot = false;
-  boot.blacklistedKernelModules = [ "bluetooth" "btrtl" "btintel" "btbcm" "btusb" ];
-
   networking.hostName = username + "-" + hostname; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;
