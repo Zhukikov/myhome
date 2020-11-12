@@ -47,7 +47,10 @@
     (import ../modules/vim.nix)
   ];
 
-  environment.variables = { EDITOR = "vim"; };
+  environment.variables = {
+    EDITOR = "vim";
+    _JAVA_AWT_WM_NONREPARENTING = "1";
+  };
 
   # Fonts
   fonts.fonts = with pkgs; [
