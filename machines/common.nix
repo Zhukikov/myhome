@@ -92,22 +92,6 @@
   # services.xserver.displayManager.gdm.enable = true;
   # services.xserver.desktopManager.gnome3.enable = true;
 
-  programs.sway = {
-    enable = true;
-    extraPackages = with pkgs; [
-      swaylock # lockscreen
-      swayidle
-      xwayland # for legacy apps
-      alacritty
-      dmenu
-      waybar # status bar
-      mako # notification daemon
-      kanshi # autorandr
-    ];
-  };
-
-  programs.waybar.enable = true;
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers = builtins.listToAttrs [{
     name = username;
