@@ -1,7 +1,7 @@
 # TODO
 
 Fix Vim plugins. FZF and so on.
-Fix waybar config
+Fix waybar config. Input language icon.
 Open programs in specific workspaces
 Evaluate dmenu and wofi
 Setup password manager
