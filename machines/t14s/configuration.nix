@@ -7,20 +7,18 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      <nixos-hardware/lenovo/thinkpad/t450s>
+      <nixos-hardware/lenovo/thinkpad/t14s/amd/gen1>
       ./hardware-configuration.nix
-      (import ../common.nix {config = config; pkgs = pkgs; username = "andrejs"; hostname = "t450s";})
+      (import ../common.nix {config = config; pkgs = pkgs; username = "andrejs"; hostname = "t14s";})
     ];
 
+  # luks
   boot.initrd.luks.devices = {
-    root = {
-      device = "/dev/disk/by-uuid/9e8daa89-dcb9-4c87-bdae-8f8813b665c6";
+    crypted = {
+      device = "/dev/disk/by-uuid/c615ec42-d4f5-4378-8e61-edbb1a284cf4";
       preLVM = true;
-      allowDiscards = true;
     };
   };
-
-  networking.interfaces.enp0s25.useDHCP = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -28,5 +26,5 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "20.03"; # Did you read the comment?
+  system.stateVersion = "21.05"; # Did you read the comment?
 }
