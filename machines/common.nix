@@ -46,6 +46,8 @@
     _JAVA_AWT_WM_NONREPARENTING = "1";
   };
 
+  environment.homeBinInPath = true;
+
   # Fonts
   fonts.fonts = with pkgs; [
     pkgs.font-awesome
