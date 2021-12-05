@@ -62,6 +62,10 @@ exec swayidle -w timeout 300 '$lock'
         xkb_layout us,se,ru
     }
 
+    input type:touchpad {
+        click_method clickfinger
+    }
+
     # Cycle to the next keyboard layout
 
     # type:keyboard stopped working for some reason after the upgrade
