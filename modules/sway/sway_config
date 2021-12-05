@@ -254,6 +254,11 @@ bar {
 } 
 
 #
+# Needed for Screen Sharing with Firefox
+#
+exec systemctl --user import-environment
+
+#
 # Screenshots
 #
 bindsym Print exec grim  - | swappy -f -

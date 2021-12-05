@@ -46,7 +46,6 @@
 
   environment.variables = {
     EDITOR = "vim";
-    _JAVA_AWT_WM_NONREPARENTING = "1";
   };
 
   environment.homeBinInPath = true;
