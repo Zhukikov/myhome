@@ -41,6 +41,9 @@
     (import ../modules/vim.nix)
   ];
 
+  services.physlock.enable = true;
+  services.physlock.allowAnyUser = true;
+
   environment.variables = {
     EDITOR = "vim";
     _JAVA_AWT_WM_NONREPARENTING = "1";

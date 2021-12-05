@@ -17,6 +17,8 @@ set $right l
 set $term alacritty
 # Your preferred application launcher
 set $menu wofi --show=drun -I -G -i
+# Lock application
+set $lock physlock -sm
 
 ### Output configuration
 #
@@ -37,6 +39,7 @@ set $menu wofi --show=drun -I -G -i
 #          timeout 300 'swaylock -f -c 000000' \
 #          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
 #          before-sleep 'swaylock -f -c 000000'
+exec swayidle -w timeout 300 '$lock'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -90,6 +93,9 @@ set $menu wofi --show=drun -I -G -i
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+
+    # Lock your session
+    bindsym --no-repeat $mod+Semicolon exec 'pkill -SIGUSR1 swayidle'
 #
 # Moving around:
 #

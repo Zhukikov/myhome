@@ -10,7 +10,6 @@
   programs.sway = {
     enable = true;
     extraPackages = with pkgs; [
-      swaylock # lockscreen
       swayidle
       xwayland # for legacy apps
       alacritty
