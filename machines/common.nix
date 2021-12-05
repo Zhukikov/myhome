@@ -108,6 +108,14 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  powerManagement.cpuFreqGovernor = "schedutil";
+  services.tlp.enable = true;
+  services.tlp.settings = {
+    START_CHARGE_THRESH_BAT0 = "75";
+    STOP_CHARGE_THRESH_BAT0 = "90";
+  };
+  services.upower.enable = true;
+
   system.autoUpgrade.enable = true;
   system.autoUpgrade.allowReboot = false;
 }
