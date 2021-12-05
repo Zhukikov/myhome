@@ -37,7 +37,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    wget nano firefox-wayland tree ag lsof git idea.idea-community maven jdk11 gnumake tig gparted acpi htop freecad hibernate arduino php74Packages.composer redis pstree lm_sensors cpufrequtils font-awesome waybar pavucontrol wirelesstools iw networkmanager neofetch fzf brightnessctl jq wev wdisplays wofi hicolor-icon-theme _1password _1password-gui slack xwayland pv php docker docker-compose google-cloud-sdk mutagen arcanist cloud-sql-proxy
+    wget nano firefox-wayland tree ag lsof git idea.idea-community maven jdk11 gnumake tig gparted acpi htop freecad hibernate arduino php74Packages.composer redis pstree lm_sensors cpufrequtils font-awesome waybar pavucontrol wirelesstools iw networkmanager neofetch fzf brightnessctl jq wev wdisplays wofi hicolor-icon-theme _1password _1password-gui slack xwayland pv php docker docker-compose google-cloud-sdk mutagen arcanist cloud-sql-proxy grim slurp swappy
     (import ../modules/vim.nix)
   ];
 

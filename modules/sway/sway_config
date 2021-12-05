@@ -252,3 +252,9 @@ bindsym $mod+r mode "resize"
 bar {
     swaybar_command waybar
 } 
+
+#
+# Screenshots
+#
+bindsym Print exec grim  - | swappy -f -
+bindsym Shift+Print exec grim -g "$(slurp)" - | swappy -f -
