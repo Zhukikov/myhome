@@ -3,3 +3,6 @@ vim/tags
 dotfiles_bak
 result
 /configuration.nix
+
+# Work
+machines/t14s/boozt.nix

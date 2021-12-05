@@ -10,6 +10,7 @@
       <nixos-hardware/lenovo/thinkpad/t14s/amd/gen1>
       ./hardware-configuration.nix
       (import ../common.nix {config = config; pkgs = pkgs; username = "andrejs"; hostname = "t14s";})
+      (import ./boozt.nix)
     ];
 
   # luks
