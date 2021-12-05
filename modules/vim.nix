@@ -49,7 +49,7 @@
       '';
       packages.myVimPackage = with pkgs.vimPlugins; {
         # loaded on launch
-        start = [ nerdtree ];
+        start = [ nerdtree vim-elixir ];
         # manually loadable by calling `:packadd $plugin-name`
         #opt = [ phpCompletion elm-vim ];
         # To automatically load a plugin when opening a filetype, add vimrc lines like:
