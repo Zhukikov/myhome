@@ -1,5 +1,17 @@
 { config, pkgs, username, hostname, ... }:
-
+let
+  unstable = import
+    (builtins.fetchTarball https://github.com/nixos/nixpkgs/tarball/nixos-unstable)
+    { config = config.nixpkgs.config; overlays = [(self: super: {
+    _1password-gui = super._1password-gui.overrideAttrs(old: {
+	  version = "8.2.0";
+	  src = super.fetchurl {
+		url = "https://downloads.1password.com/linux/tar/stable/x86_64/1password-8.2.0.x64.tar.gz";
+		sha256 = "1hnpvvval8a9ny5x5zffn5lf5qrwc4hcs3jvhqmd7m4adh2i6y2i";
+	  };
+    });
+  })];};
+in
 {
   imports = [
     ../modules/sway/sway.nix
@@ -7,9 +19,11 @@
   
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.configurationLimit = 42;
+  # Prevent auth bypassing.
+  boot.loader.systemd-boot.editor = false;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
-
   networking.hostName = username + "-" + hostname; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;
@@ -19,6 +33,7 @@
   # replicates the default behaviour.
   networking.useDHCP = false;
   networking.interfaces.wlp3s0.useDHCP = true;
+  networking.interfaces.enp2s0f0.useDHCP = true;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -37,7 +52,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    wget nano firefox-wayland tree ag lsof git idea.idea-community maven jdk11 gnumake tig gparted acpi htop freecad hibernate arduino php74Packages.composer redis pstree lm_sensors cpufrequtils font-awesome waybar pavucontrol wirelesstools iw networkmanager neofetch fzf brightnessctl jq wev wdisplays wofi hicolor-icon-theme _1password _1password-gui slack xwayland pv php docker docker-compose google-cloud-sdk mutagen arcanist cloud-sql-proxy grim slurp swappy
+    wget nano firefox-wayland google-chrome tree ag lsof git idea.idea-community maven jdk11 gnumake tig gparted acpi htop freecad hibernate arduino php74 php74Packages.composer redis pstree lm_sensors cpufrequtils font-awesome waybar pavucontrol wirelesstools iw networkmanager neofetch fzf brightnessctl jq wev wdisplays wofi hicolor-icon-theme unstable._1password-gui slack xwayland pv docker-compose google-cloud-sdk mutagen arcanist cloud-sql-proxy unzip unstable.dbeaver jetbrains.phpstorm xdg-utils usbutils grim slurp imv mtpaint wl-clipboard swappy gnome3.adwaita-icon-theme ranger zathura hyperfine gh
     (import ../modules/vim.nix)
   ];
 
@@ -64,6 +79,8 @@
   #   pinentryFlavor = "gnome3";
   # };
 
+  programs.ssh.startAgent = true;
+
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
@@ -79,8 +96,6 @@
   # services.printing.enable = true;
 
   # Enable sound.
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
   hardware.pulseaudio.support32Bit = true;
 
   # Enable the X11 windowing system.
@@ -100,7 +115,7 @@
     name = username;
     value = {
       isNormalUser = true;
-      extraGroups = [ "wheel" "sway" ];
+      extraGroups = [ "wheel" "sway" "docker" "networkmanager" ];
       initialPassword = username;
     };
   }];
@@ -121,4 +136,6 @@
   nix.gc.automatic = true;
   nix.gc.dates = "weekly";
   nix.gc.options = "--delete-older-than 15d";
+
+  services.avahi.enable = true;
 }

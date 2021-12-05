@@ -254,6 +254,11 @@ bar {
 } 
 
 #
+# Notifications
+#
+exec mako
+
+#
 # Needed for Screen Sharing with Firefox
 #
 exec systemctl --user import-environment
