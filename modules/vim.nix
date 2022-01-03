@@ -34,6 +34,9 @@
         set path=**
         nnoremap <leader>f :find *
 
+        nnoremap <leader>s :GFiles<CR>
+        nnoremap <leader>l :ls<cr>:b<space>
+
         set incsearch
         set hlsearch
         set ignorecase
@@ -46,10 +49,24 @@
         set scrolloff=5
 
         set backspace=indent,eol,start
+
+        " Required, explicitly enable Elixir LS
+        let g:ale_linters = {}
+        let g:ale_linters.elixir = ['elixir-ls']
+
+        " Required, tell ALE where to find Elixir LS
+        let g:ale_elixir_elixir_ls_release = expand("${pkgs.elixir_ls}/lib")
+
+        " Optional, you can disable Dialyzer with this setting
+        let g:ale_elixir_elixir_ls_config = {'elixirLS': {'dialyzerEnabled': v:false}}
+
+        " Optional, configure as-you-type completions
+        set completeopt=menu,menuone,preview,noselect,noinsert
+        let g:ale_completion_enabled = 1
       '';
       packages.myVimPackage = with pkgs.vimPlugins; {
         # loaded on launch
-        start = [ nerdtree vim-elixir ];
+        start = [ nerdtree vim-elixir ale fugitive vim-gitgutter fzf-vim vim-vinegar ];
         # manually loadable by calling `:packadd $plugin-name`
         #opt = [ phpCompletion elm-vim ];
         # To automatically load a plugin when opening a filetype, add vimrc lines like:
