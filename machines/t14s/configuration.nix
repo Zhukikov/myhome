@@ -21,7 +21,6 @@
     };
   };
 
-  networking.interfaces.enp2s0f0.useDHCP = true;
   services.fstrim.enable = true;
   hardware.bluetooth.enable = true;
 
