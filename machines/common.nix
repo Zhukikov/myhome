@@ -28,6 +28,8 @@ in
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;
   networking.networkmanager.dhcp = "internal";
+  networking.networkmanager.wifi.backend = "iwd";
+  networking.networkmanager.wifi.powersave = false;
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
@@ -51,7 +53,7 @@ in
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    wget nano firefox-wayland google-chrome tree ripgrep lsof git idea.idea-community maven jdk11 gnumake tig gparted acpi htop freecad hibernate arduino php74 php74Packages.composer redis pstree lm_sensors cpufrequtils font-awesome waybar pavucontrol wirelesstools iw networkmanager neofetch fzf brightnessctl jq wev wdisplays wofi hicolor-icon-theme unstable._1password-gui slack xwayland pv docker-compose google-cloud-sdk mutagen arcanist cloud-sql-proxy unzip unstable.dbeaver jetbrains.phpstorm xdg-utils usbutils grim slurp imv mtpaint wl-clipboard swappy gnome3.adwaita-icon-theme ranger zathura hyperfine gh elixir_ls wf-recorder mpv
+    wget nano unstable.firefox-wayland google-chrome tree ripgrep lsof git jetbrains.idea-community maven jdk11 gnumake tig gparted acpi htop freecad hibernate arduino php74 php74Packages.composer redis pstree lm_sensors cpufrequtils font-awesome waybar pavucontrol wirelesstools iw networkmanager neofetch fzf brightnessctl jq wev wdisplays wofi hicolor-icon-theme _1password-gui slack xwayland pv docker-compose google-cloud-sdk mutagen arcanist cloud-sql-proxy unzip dbeaver jetbrains.phpstorm xdg-utils usbutils grim slurp imv mtpaint wl-clipboard swappy gnome3.adwaita-icon-theme ranger zathura hyperfine gh elixir_ls wf-recorder mpv pinta dnsutils dive
     (import ../modules/vim.nix)
   ];
 
@@ -60,7 +62,14 @@ in
 
   environment.variables = {
     EDITOR = "vim";
+    HISTCONTROL = "ignoredups:erasedups";
+    HISTSIZE = "10000";
   };
+
+  environment.interactiveShellInit = ''
+    # append history
+    shopt -s histappend
+  '';
 
   environment.homeBinInPath = true;
 
@@ -135,6 +144,10 @@ in
   nix.gc.automatic = true;
   nix.gc.dates = "weekly";
   nix.gc.options = "--delete-older-than 15d";
+  nix.package = pkgs.nixFlakes;
+  nix.extraOptions = ''
+    experimental-features = nix-command flakes
+  '';
 
   services.avahi.enable = true;
 }

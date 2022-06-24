@@ -50,6 +50,11 @@
 
         set backspace=indent,eol,start
 
+        set ruler
+
+        " Save as sudo
+        cmap w!! w !sudo tee > /dev/null %
+
         " Required, explicitly enable Elixir LS
         let g:ale_linters = {}
         let g:ale_linters.elixir = ['elixir-ls']

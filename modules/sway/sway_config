@@ -39,7 +39,7 @@ set $lock physlock -sm
 #          timeout 300 'swaylock -f -c 000000' \
 #          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
 #          before-sleep 'swaylock -f -c 000000'
-exec swayidle -w timeout 300 '$lock'
+exec swayidle -w timeout 600 '$lock'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -65,6 +65,8 @@ exec swayidle -w timeout 300 '$lock'
     input type:touchpad {
         click_method clickfinger
     }
+
+    input 1386:38:Wacom_Intuos5_touch_S_Pen map_to_output eDP-1
 
     # Cycle to the next keyboard layout
 
@@ -151,6 +153,12 @@ exec swayidle -w timeout 300 '$lock'
     bindsym $mod+Shift+0 move container to workspace number 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
+
+    # Move workspace to another screen
+    bindsym $mod+Control+Shift+Right move workspace to output right
+    bindsym $mod+Control+Shift+Left move workspace to output left
+    bindsym $mod+Control+Shift+Down move workspace to output down
+    bindsym $mod+Control+Shift+Up move workspace to output up
 #
 # Layout stuff:
 #
