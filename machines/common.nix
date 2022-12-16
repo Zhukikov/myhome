@@ -60,6 +60,8 @@ in
   services.physlock.enable = true;
   services.physlock.allowAnyUser = true;
 
+  services.fwupd.enable = true;
+
   environment.variables = {
     EDITOR = "vim";
     HISTCONTROL = "ignoredups:erasedups";
