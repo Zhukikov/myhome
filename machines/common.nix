@@ -66,6 +66,7 @@ in
     EDITOR = "vim";
     HISTCONTROL = "ignoredups:erasedups";
     HISTSIZE = "10000";
+    ERL_AFLAGS = "-kernel shell_history enabled";
   };
 
   environment.interactiveShellInit = ''
