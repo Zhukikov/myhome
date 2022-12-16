@@ -71,7 +71,7 @@
       '';
       packages.myVimPackage = with pkgs.vimPlugins; {
         # loaded on launch
-        start = [ nerdtree vim-elixir ale fugitive vim-gitgutter fzf-vim vim-vinegar ];
+        start = [ nerdtree vim-elixir ale fugitive vim-gitgutter fzf-vim vim-vinegar vim-terraform ];
         # manually loadable by calling `:packadd $plugin-name`
         #opt = [ phpCompletion elm-vim ];
         # To automatically load a plugin when opening a filetype, add vimrc lines like:
