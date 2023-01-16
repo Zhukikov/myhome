@@ -141,7 +141,7 @@ in
   };
   services.upower.enable = true;
 
-  system.autoUpgrade.enable = true;
+  system.autoUpgrade.enable = false;
   system.autoUpgrade.allowReboot = false;
 
   nix.gc.automatic = true;
