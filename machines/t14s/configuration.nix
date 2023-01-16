@@ -7,7 +7,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      <nixos-hardware/lenovo/thinkpad/t14s/amd/gen1>
+      "${builtins.fetchGit { url = "https://github.com/NixOS/nixos-hardware.git"; ref = "master"; }}/lenovo/thinkpad/t14s/amd/gen1"
       ./hardware-configuration.nix
       (import ../common.nix {config = config; pkgs = pkgs; username = "andrejs"; hostname = "t14s";})
       (import ./boozt.nix)
