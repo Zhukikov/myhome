@@ -13,6 +13,18 @@
       (import ./boozt.nix)
     ];
 
+  boot.kernelPackages = pkgs.lib.mkForce (pkgs.linuxPackagesFor (pkgs.linux_6_1.override {
+    argsOverride = rec {
+      src = pkgs.fetchurl {
+        url = "mirror://kernel/linux/kernel/v6.x/linux-${version}.tar.xz";
+        sha256 = "Pk2OVh2lcDogWujXsr7WxcZPxCme68v9IEgeY7V9XuM=";
+      };
+      version = "6.1.6";
+      modDirVersion = "6.1.6";
+    };
+  }));
+
+
   # luks
   boot.initrd.luks.devices = {
     crypted = {
