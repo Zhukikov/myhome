@@ -47,7 +47,11 @@ in
   # };
 
   # Set your time zone.
-  time.timeZone = "Europe/Stockholm";
+  # Don't use this and rely on geoclue2 settings below.
+  # time.timeZone = "Europe/Stockholm";
+
+  services.ntp.enable = true;
+  services.automatic-timezoned.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
