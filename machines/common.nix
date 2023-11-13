@@ -58,7 +58,8 @@ in
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    wget nano unstable.firefox-wayland google-chrome tree ripgrep lsof git jetbrains.idea-community maven jdk11 gnumake tig gparted acpi htop freecad hibernate arduino php81 php81Packages.composer redis pstree lm_sensors cpufrequtils font-awesome waybar pavucontrol wirelesstools iw networkmanager neofetch fzf brightnessctl jq wev wdisplays wofi hicolor-icon-theme _1password-gui slack xwayland pv docker-compose (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin]) mutagen arcanist cloud-sql-proxy unzip dbeaver jetbrains.phpstorm xdg-utils usbutils grim slurp imv mtpaint wl-clipboard swappy gnome3.adwaita-icon-theme ranger zathura hyperfine gh elixir_ls wf-recorder mpv pinta dnsutils dive kubernetes-helm argocd fluxcd k9s terraform_1 wavemon
+    wget nano firefox tree ripgrep lsof git jetbrains.idea-community maven jdk11 gnumake tig gparted acpi htop freecad hibernate arduino php81 php81Packages.composer redis pstree lm_sensors cpufrequtils font-awesome waybar pavucontrol wirelesstools iw networkmanager neofetch fzf brightnessctl jq wev wdisplays wofi hicolor-icon-theme _1password-gui slack xwayland pv docker-compose (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin]) mutagen cloud-sql-proxy unzip jetbrains.phpstorm xdg-utils usbutils grim slurp imv mtpaint wl-clipboard swappy gnome3.adwaita-icon-theme ranger zathura hyperfine gh elixir_ls wf-recorder mpv pinta dnsutils dive kubernetes-helm argocd fluxcd k9s terraform_1 wavemon killall inetutils unstable.burpsuite ngrok postman # arcanist
+    dbeaver
     (import ../modules/vim.nix)
   ];
 
