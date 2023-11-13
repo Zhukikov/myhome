@@ -271,6 +271,8 @@ exec mako
 #
 exec systemctl --user import-environment
 
+exec systemctl --user restart kanshi.service
+
 #
 # Screenshots
 #
