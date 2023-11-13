@@ -70,7 +70,8 @@ exec swayidle -w timeout 600 '$lock'
         click_method clickfinger
     }
 
-    input 1386:38:Wacom_Intuos5_touch_S_Pen map_to_output eDP-1
+    # input 1386:38:Wacom_Intuos5_touch_S_Pen map_to_output eDP-1
+    input type:'Tablet pen' map_to_output eDP-1
 
     # Cycle to the next keyboard layout
 
