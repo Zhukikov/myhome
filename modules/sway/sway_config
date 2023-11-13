@@ -62,6 +62,10 @@ exec swayidle -w timeout 600 '$lock'
         xkb_layout us,se,ru
     }
 
+    input type:mouse {
+        scroll_factor 1.0
+    }
+
     input type:touchpad {
         click_method clickfinger
     }
