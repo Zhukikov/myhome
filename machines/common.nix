@@ -143,6 +143,7 @@ in
     STOP_CHARGE_THRESH_BAT0 = "90";
   };
   services.upower.enable = true;
+  powerManagement.powertop.enable = true;
 
   system.autoUpgrade.enable = false;
   system.autoUpgrade.allowReboot = false;
