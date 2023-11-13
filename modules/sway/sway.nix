@@ -23,6 +23,7 @@
       waybar # status bar
       mako # notification daemon
       kanshi # autorandr
+      swaylock
     ];
   };
 

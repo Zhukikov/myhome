@@ -60,9 +60,6 @@ in
     (import ../modules/vim.nix)
   ];
 
-  services.physlock.enable = true;
-  services.physlock.allowAnyUser = true;
-
   services.fwupd.enable = true;
 
   environment.variables = {

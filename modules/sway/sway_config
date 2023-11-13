@@ -18,7 +18,7 @@ set $term alacritty
 # Your preferred application launcher
 set $menu wofi --show=drun -I -G -i
 # Lock application
-set $lock physlock -sm
+set $lock swaylock -l -f -c 000000
 
 ### Output configuration
 #
