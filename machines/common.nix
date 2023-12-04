@@ -13,21 +13,23 @@ let
   })];};
 in
 {
-  nixpkgs.overlays = [(final: prev: {
-    dbeaver = prev.dbeaver.overrideAttrs (old: {
-      desktopItems = [
-        (pkgs.makeDesktopItem {
-          name = "dbeaver";
-          exec = "env GDK_BACKEND=x11 dbeaver";
-          icon = "dbeaver";
-          desktopName = "dbeaver";
-          comment = "SQL Integrated Development Environment";
-          genericName = "SQL Integrated Development Environment";
-          categories = [ "Development" ];
-        })
-      ];
-    });
-  })];
+  nixpkgs.overlays = [
+    (final: prev: {
+      dbeaver = prev.dbeaver.overrideAttrs (old: {
+        desktopItems = [
+          (pkgs.makeDesktopItem {
+            name = "dbeaver";
+            exec = "env GDK_BACKEND=x11 dbeaver";
+            icon = "dbeaver";
+            desktopName = "dbeaver";
+            comment = "SQL Integrated Development Environment";
+            genericName = "SQL Integrated Development Environment";
+            categories = [ "Development" ];
+          })
+        ];
+      });
+    })
+  ];
   imports = [
     ../modules/sway/sway.nix
   ];
