@@ -232,11 +232,17 @@ in
   nixpkgs.config.allowUnfree = true;
 
   powerManagement.cpuFreqGovernor = "schedutil";
+
   services.tlp.enable = true;
   services.tlp.settings = {
+    CPU_SCALING_GOVERNOR_ON_AC = "schedutil";
+    CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
     START_CHARGE_THRESH_BAT0 = "75";
-    STOP_CHARGE_THRESH_BAT0 = "90";
+    STOP_CHARGE_THRESH_BAT0 = "80";
+    PLATFORM_PROFILE_ON_AC = "balanced";
+    PLATFORM_PROFILE_ON_BAT = "low-power";
   };
+
   services.upower.enable = true;
   powerManagement.powertop.enable = true;
 
