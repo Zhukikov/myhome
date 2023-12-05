@@ -121,7 +121,7 @@ in
     docker-compose
     (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
     mutagen
-    cloud-sql-proxy
+    google-cloud-sql-proxy
     unzip
     jetbrains.phpstorm
     xdg-utils
@@ -153,7 +153,7 @@ in
     inetutils
     unstable.burpsuite
     ngrok
-    postman
+    #postman TODO: Build fails in 23.11
     dbeaver
     (import ../modules/vim.nix)
   ];
@@ -175,7 +175,7 @@ in
   environment.homeBinInPath = true;
 
   # Fonts
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     pkgs.font-awesome
   ];
 
