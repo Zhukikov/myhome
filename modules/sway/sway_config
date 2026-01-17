@@ -18,7 +18,10 @@ set $term alacritty
 # Your preferred application launcher
 set $menu wofi --show=drun -I -G -i
 # Lock application
-set $lock swaylock -l -f -c 000000
+set $lock swaymsg input type:keyboard xkb_switch_layout "0" && swaylock -l -f -c 000000
+
+# Cursor theme
+seat seat0 xcursor_theme Bibata-Modern-Ice 24
 
 ### Output configuration
 #
@@ -39,11 +42,14 @@ set $lock swaylock -l -f -c 000000
 #          timeout 300 'swaylock -f -c 000000' \
 #          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
 #          before-sleep 'swaylock -f -c 000000'
-exec swayidle -w timeout 600 '$lock'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
+exec swayidle -w \
+    timeout 300 '$lock' \
+    timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+    before-sleep '$lock && sleep 3'
 
 ### Input configuration
 #

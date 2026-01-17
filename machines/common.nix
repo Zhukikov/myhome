@@ -1,33 +1,11 @@
 { config, pkgs, username, hostname, ... }:
 let
-  unstable = import
-    (builtins.fetchTarball https://github.com/nixos/nixpkgs/tarball/nixos-unstable)
-    { config = config.nixpkgs.config; overlays = [(self: super: {
-    _1password-gui = super._1password-gui.overrideAttrs(old: {
-	  version = "8.2.0";
-	  src = super.fetchurl {
-		url = "https://downloads.1password.com/linux/tar/stable/x86_64/1password-8.2.0.x64.tar.gz";
-		sha256 = "1hnpvvval8a9ny5x5zffn5lf5qrwc4hcs3jvhqmd7m4adh2i6y2i";
-	  };
-    });
-  })];};
+  old = import (builtins.fetchTarball https://github.com/nixos/nixpkgs/tarball/964dc8e4082226744aa4f81e93c189c28a5a8ce6) {};
+  unstable = import (builtins.fetchTarball https://github.com/nixos/nixpkgs/tarball/nixos-unstable) {};
 in
 {
   nixpkgs.overlays = [
     (final: prev: {
-      dbeaver = prev.dbeaver.overrideAttrs (old: {
-        desktopItems = [
-          (pkgs.makeDesktopItem {
-            name = "dbeaver";
-            exec = "env GDK_BACKEND=x11 dbeaver";
-            icon = "dbeaver";
-            desktopName = "dbeaver";
-            comment = "SQL Integrated Development Environment";
-            genericName = "SQL Integrated Development Environment";
-            categories = [ "Development" ];
-          })
-        ];
-      });
     })
   ];
   imports = [
@@ -59,7 +37,7 @@ in
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.utf8";
+  i18n.defaultLocale = "en_US.UTF-8";
   # console = {
   #   font = "Lat2-Terminus16";
   #   keyMap = "us";
@@ -75,6 +53,7 @@ in
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    file
     vlc
     trippy
     powertop
@@ -94,10 +73,14 @@ in
     acpi
     htop
     freecad
-    hibernate
+    # hibernate unmaintained
     arduino
-    php81
-    php81Packages.composer
+    (pkgs.php83.buildEnv {
+      extensions = ({enabled, all}: enabled ++ (with all; [
+        redis
+      ]));
+    })
+    php83Packages.composer
     redis
     pstree
     lm_sensors
@@ -121,7 +104,7 @@ in
     xwayland
     pv
     docker-compose
-    (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
+    (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin google-cloud-sdk.components.pubsub-emulator])
     mutagen
     google-cloud-sql-proxy
     unzip
@@ -131,15 +114,15 @@ in
     grim
     slurp
     imv
-    mtpaint
+    #mtpaint
     wl-clipboard
     swappy
-    gnome3.adwaita-icon-theme
+    adwaita-icon-theme
     ranger
     zathura
     hyperfine
     gh
-    elixir_ls
+    elixir-ls
     wf-recorder
     mpv
     pinta
@@ -149,25 +132,36 @@ in
     argocd
     fluxcd
     k9s
-    terraform_1
+    terraform
     wavemon
     killall
     inetutils
-    unstable.burpsuite
+    burpsuite
     ngrok
     #postman TODO: Build fails in 23.11
-    dbeaver
+    dbeaver-bin
+    emacs
+    desktop-file-utils
+    unstable.protobuf
     (import ../modules/vim.nix)
+    bibata-cursors
+    bruno
+    opensnitch-ui
+    unstable.gemini-cli
   ];
 
   services.fwupd.enable = true;
 
   environment.variables = {
     EDITOR = "vim";
-    HISTCONTROL = "ignoredups:erasedups";
+    HISTCONTROL = "ignorespace:ignoredups:erasedups";
     HISTSIZE = "10000";
     ERL_AFLAGS = "-kernel shell_history enabled";
+    XCURSOR_THEME = "Bibata-Modern-Ice";
+    XCURSOR_SIZE = "24";
   };
+
+  programs.dconf.enable = true;
 
   environment.interactiveShellInit = ''
     # append history
@@ -192,6 +186,10 @@ in
 
   programs.ssh.startAgent = true;
 
+  programs.firejail.enable = true;
+
+  services.opensnitch.enable = true;
+
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
@@ -207,7 +205,7 @@ in
   # services.printing.enable = true;
 
   # Enable sound.
-  hardware.pulseaudio.support32Bit = true;
+  services.pulseaudio.support32Bit = true;
 
   # Enable the X11 windowing system.
   # services.xserver.enable = false;
@@ -254,10 +252,13 @@ in
   nix.gc.automatic = true;
   nix.gc.dates = "weekly";
   nix.gc.options = "--delete-older-than 15d";
-  nix.package = pkgs.nixFlakes;
+  nix.package = pkgs.nixVersions.stable;
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';
 
   services.avahi.enable = true;
+
+  services.orca.enable = false;
+  services.speechd.enable = false;
 }

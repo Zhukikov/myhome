@@ -1,7 +1,7 @@
 (
   with import <nixpkgs> {};
 
-  vim_configurable.customize {
+  vim-full.customize {
     # Specifies the vim binary name.
     # E.g. set this to "my-vim" and you need to type "my-vim" to open this vim
     # This allows to have multiple vim packages installed (e.g. with a different set of plugins)
@@ -60,7 +60,7 @@
         let g:ale_linters.elixir = ['elixir-ls']
 
         " Required, tell ALE where to find Elixir LS
-        let g:ale_elixir_elixir_ls_release = expand("${pkgs.elixir_ls}/lib")
+        let g:ale_elixir_elixir_ls_release = expand("${pkgs.elixir-ls}/lib")
 
         " Optional, you can disable Dialyzer with this setting
         let g:ale_elixir_elixir_ls_config = {'elixirLS': {'dialyzerEnabled': v:false}}
