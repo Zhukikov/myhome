@@ -145,6 +145,12 @@ in
     emacs
     desktop-file-utils
     unstable.protobuf
+    screen
+    picocom
+    gptfdisk
+    binutils
+    ubootTools
+    dtc
     (import ../modules/vim.nix)
     bibata-cursors
     bruno
@@ -223,7 +229,7 @@ in
     name = username;
     value = {
       isNormalUser = true;
-      extraGroups = [ "wheel" "sway" "docker" "networkmanager" ];
+      extraGroups = [ "wheel" "sway" "docker" "networkmanager" "dialout" ];
       initialPassword = username;
     };
   }];
