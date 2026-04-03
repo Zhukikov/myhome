@@ -1,7 +1,8 @@
 { config, pkgs, username, hostname, ... }:
 let
-  old = import (builtins.fetchTarball https://github.com/nixos/nixpkgs/tarball/964dc8e4082226744aa4f81e93c189c28a5a8ce6) {};
-  unstable = import (builtins.fetchTarball https://github.com/nixos/nixpkgs/tarball/nixos-unstable) {};
+  unstable = import (builtins.fetchTarball https://github.com/nixos/nixpkgs/tarball/nixos-unstable) {
+    config.allowUnfree = true;
+  };
 in
 {
   nixpkgs.overlays = [
@@ -64,7 +65,6 @@ in
     ripgrep
     lsof
     git
-    jetbrains.idea-community
     maven
     jdk11
     gnumake
@@ -146,7 +146,6 @@ in
     (import ../modules/vim.nix)
     bibata-cursors
     bruno
-    opensnitch-ui
     unstable.gemini-cli
   ];
 
@@ -187,8 +186,6 @@ in
   programs.ssh.startAgent = true;
 
   programs.firejail.enable = true;
-
-  services.opensnitch.enable = true;
 
   # List services that you want to enable:
 

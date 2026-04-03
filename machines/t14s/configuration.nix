@@ -10,7 +10,7 @@
       "${builtins.fetchGit { url = "https://github.com/NixOS/nixos-hardware.git"; ref = "master"; }}/lenovo/thinkpad/t14s/amd/gen1"
       ./hardware-configuration.nix
       (import ../common.nix {config = config; pkgs = pkgs; username = "andrejs"; hostname = "t14s";})
-      (import ./boozt.nix)
+      (import ./boozt.nix { config = config; pkgs = pkgs; })
     ];
 
   # luks
